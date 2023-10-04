@@ -52,7 +52,7 @@ const modifyImage = async function (originalFile, originalName) {
     const modifiedFile = new File([modifiedBlob], 'modified_image.png', { lastModified: originalFile.lastModified, type: `image/png` });
 
     // Trigger the download
-    downloadLink.click();
+    // downloadLink.click();
 
     return modifiedFile;
 }
