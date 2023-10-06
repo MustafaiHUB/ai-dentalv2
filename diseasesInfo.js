@@ -196,6 +196,8 @@ async function JSONcall2(imageFile) {
                     // console.log(selectedImage.src);
                     for (const eachBox of data) {
                         const { box } = eachBox;
+                        console.log(box);
+                        console.log(eachBox);
                         const type = eachBox.cls;
                         const { score } = eachBox;
                         console.log(checkboxInput[type]);
