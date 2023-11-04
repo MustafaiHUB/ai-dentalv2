@@ -104,7 +104,10 @@
   /* background-color: #333; */
   /* height: fit-content; */
 }
-.uploaded-image .choosing-models ul {
+.uploaded-image .choosing-models > div {
+  position: absolute;
+}
+/* .uploaded-image .choosing-models ul {
   background-color: var(--dark-color);
   width: 100%;
   display: flex;
@@ -115,7 +118,7 @@
   padding: 10px 20px;
   transition: var(--transition-5m);
   cursor: pointer;
-}
+} */
 /* .uploaded-image .choosing-models ul li:hover,
 .active {
   background-color: var(--light-color) !important;
@@ -127,9 +130,8 @@
 } */
 .uploaded-image .choosing-models img.selected-image {
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  /* margin-top: 400px; */
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
 }
 .uploaded-image .list-diseases {
   text-align: center;
