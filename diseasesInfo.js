@@ -38,24 +38,24 @@ function generateDiseasePlace(color = '', diseaseName, topCoords, leftCoords, sc
     choosingModels.insertAdjacentHTML('beforeend', html);
 }
 
-const modifyImage = async function (originalFile, originalName) {
-    const originalContent = await originalFile.arrayBuffer();
-    // Create a new Blob with the modified content
-    const modifiedBlob = new Blob([originalContent], { type: `image/png` });
+// const modifyImage = async function (originalFile, originalName) {
+//     const originalContent = await originalFile.arrayBuffer();
+//     // Create a new Blob with the modified content
+//     const modifiedBlob = new Blob([originalContent], { type: `image/png` });
 
-    // Create a download link for the modified Blob
-    const downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(modifiedBlob);
-    downloadLink.download = `modified_image.png`;
+//     // Create a download link for the modified Blob
+//     const downloadLink = document.createElement('a');
+//     downloadLink.href = URL.createObjectURL(modifiedBlob);
+//     downloadLink.download = `modified_image.png`;
 
-    // Create a new File object with the modified Blob and name
-    const modifiedFile = new File([modifiedBlob], 'modified_image.png', { lastModified: originalFile.lastModified, type: `image/png` });
+//     // Create a new File object with the modified Blob and name
+//     const modifiedFile = new File([modifiedBlob], 'modified_image.png', { lastModified: originalFile.lastModified, type: `image/png` });
 
-    // Trigger the download
-    // downloadLink.click();
+//     // Trigger the download
+//     // downloadLink.click();
 
-    return modifiedFile;
-}
+//     return modifiedFile;
+// }
 
 async function changeInput(e) {
     clearInput();
@@ -72,7 +72,7 @@ async function changeInput(e) {
 
     // Getting the file information
     const imageFile = e.target.files[0];
-    const imageName = imageFile.name;
+    // const imageName = imageFile.name;
     // console.log(imageFile.width);
     // console.log(e);
 
@@ -93,10 +93,10 @@ async function changeInput(e) {
     // console.log(newImg.width);
     // console.log(URL.createObjectURL(imageFile).width);
 
-    const file = await modifyImage(imageFile, imageName);
+    // const file = await modifyImage(imageFile, imageName);
 
-    currentImage.setAttribute('src', URL.createObjectURL(file));
-    JSONcall1(file);
+    currentImage.setAttribute('src', URL.createObjectURL(imageFile));
+    JSONcall1(imageFile);
 }
 
 async function JSONcall1(imageFile) {
