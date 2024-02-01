@@ -105,7 +105,8 @@ async function JSONcall1(imageFile) {
     formData.append("image", imageFile);
 
     try {
-        const res = await Promise.race([fetch('https://dentalvision.ju.edu.jo/upload/', {
+        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo/upload/', {
+            // const res = await Promise.race([fetch('http://87.236.232.91:8000/upload/', {
             method: 'POST',
             body: formData,
         }), setTimeOut(120)]);
@@ -136,7 +137,8 @@ async function JSONcall1(imageFile) {
 
 async function JSONcall2(imageFile) {
     try {
-        const res = await Promise.race([fetch('https://dentalvision.ju.edu.jo/v8_mohammad/', {
+        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo/v8_mohammad/', {
+            // const res = await Promise.race([fetch('http://87.236.232.91:8000/v8_mohammad/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -188,7 +190,7 @@ async function JSONcall2(imageFile) {
                 selectedImage.addEventListener('load', function (e) {
                     console.log(e);
                     console.log(selectedImage.width);
-                    imageWidth = +selectedImage.getClientRects()[0].width;
+                    imageWidth = +selectedImage.getClientRects()[0].width; // Convert string to number by using the + operator at the biggening
                     imageHeight = +selectedImage.getClientRects()[0].height;
                     console.log(typeof (imageWidth), imageHeight);
 
