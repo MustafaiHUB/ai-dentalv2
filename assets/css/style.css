@@ -442,3 +442,19 @@ footer .container .footer-bottom p {
     box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
   }
 }
+/* === START CIRCLE CODE === */
+.text {
+  position: relative;
+}
+.circle {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #4b90f179;
+  box-shadow: 0 0 100px 50px #4b90f1;
+  left: 50%;
+  top: 60px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+/* === ENS CIRCLE CODE === */

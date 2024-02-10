@@ -105,7 +105,7 @@ async function JSONcall1(imageFile) {
     formData.append("image", imageFile);
 
     try {
-        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo/upload/', {
+        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo:8000/upload/', {
             // const res = await Promise.race([fetch('http://87.236.232.91:8000/upload/', {
             method: 'POST',
             body: formData,
@@ -137,7 +137,7 @@ async function JSONcall1(imageFile) {
 
 async function JSONcall2(imageFile) {
     try {
-        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo/v8_mohammad/', {
+        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo:8000/v8_mohammad/', {
             // const res = await Promise.race([fetch('http://87.236.232.91:8000/v8_mohammad/', {
             method: 'POST',
             headers: {

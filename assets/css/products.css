@@ -90,7 +90,6 @@
   cursor: pointer;
 }
 /* === END OUR PRODUCTS === */
-
 .uploaded-image {
   position: relative;
 }
@@ -101,45 +100,41 @@
 }
 .uploaded-image .choosing-models {
   position: relative;
-  /* background-color: #333; */
-  /* height: fit-content; */
 }
 .uploaded-image .choosing-models > div {
   position: absolute;
 }
-
-/* .uploaded-image .choosing-models ul {
-  background-color: var(--dark-color);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.uploaded-image .choosing-models ul li {
-  color: var(--light-color);
-  padding: 10px 20px;
-  transition: var(--transition-5m);
-  cursor: pointer;
-} */
-/* .uploaded-image .choosing-models ul li:hover,
-.active {
-  background-color: var(--light-color) !important;
-  color: var(--dark-color) !important;
-  border: 1px solid var(--main-color);
-}
-.uploaded-image .choosing-models ul li:not(:last-child) {
-  border-bottom: 1px solid var(--light-color);
-} */
 .uploaded-image .choosing-models img.selected-image {
   width: 100%;
-  /* border-top-left-radius: 10px; */
-  /* border-top-right-radius: 10px; */
 }
 .uploaded-image .list-diseases {
   text-align: center;
   padding: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(24%, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(19%, 1fr));
   column-gap: 1%;
+}
+@media (max-width: 768px) {
+  .uploaded-image .list-diseases {
+    grid-template-columns: repeat(auto-fill, minmax(24%, 1fr));
+  }
+}
+@media (max-width: 585px) {
+  .uploaded-image .list-diseases {
+    grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+  }
+}
+@media (max-width: 349px) {
+  .uploaded-image .list-diseases {
+    grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
+  }
+}
+.uploaded-image .list-diseases > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 100px;
+  padding: 10px 0;
 }
 .uploaded-image .list-diseases > div {
   display: flex;
@@ -149,56 +144,106 @@
   padding: 10px 0;
 }
 .uploaded-image input {
-  border: none;
+  /* border: none;
   outline: none;
   position: relative;
   cursor: pointer;
   width: 25px;
-  height: 25px;
+  height: 25px; */
+
+  /* position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0; */
 }
-.uploaded-image input::before {
+/* Hide the default checkbox */
+.container-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container-label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+}
+/* Create a custom checkbox */
+.checkmark {
+  /* --clr: #0b6e4f; */
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: 300ms;
+}
+/* When the checkbox is checked, add a blue background */
+.container-label input:checked ~ .checkmark {
+  /* background-color: var(--clr); */
+  border-radius: 0.5rem;
+  animation: pulse 500ms ease-in-out;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-label .checkmark:after {
+  left: 0.35em;
+  top: 0.2em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #e0e0e2;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 #0b6e4f90;
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+
+  75% {
+    box-shadow: 0 0 0 5px #0b6e4f60;
+  }
+
+  100% {
+    box-shadow: 0 0 0 5px #0b6e4f30;
+    rotate: 0;
+  }
+}
+/* .uploaded-image input::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: var(--dark-color);
   border-radius: 2px;
-}
-/* Special color for each diseas */
-[data-color="orangered"]:checked::before {
-  background-color: orangered !important;
-}
-[data-color="orange"]:checked::before {
-  background-color: orange !important;
-}
-[data-color="red"]:checked::before {
-  background-color: red !important;
-}
-[data-color="crimson"]:checked::before {
-  background-color: crimson !important;
-}
-[data-color="yellow"]:checked::before {
-  background-color: yellow !important;
-}
-[data-color="green"]:checked::before {
-  background-color: green !important;
-}
-[data-color="blue"]:checked::before {
-  background-color: blue !important;
-}
-[data-color="darkorchid"]:checked::before {
-  background-color: darkorchid !important;
-}
-[data-color="aqua"]:checked::before {
-  background-color: aqua !important;
-}
-[data-color="brown"]:checked::before {
-  background-color: brown !important;
-}
-[data-color="burlywood"]:checked::before {
-  background-color: burlywood !important;
-}
-.uploaded-image input::after {
+} */
+
+/* .uploaded-image input::after {
   content: none;
   font-family: "Font Awesome 6 free";
   position: absolute;
@@ -208,19 +253,19 @@
   justify-content: center;
   align-items: center;
   transition: var(--transition-5m);
-}
-.uploaded-image input:checked::after {
+} */
+/* .uploaded-image input:checked::after {
   content: "\f058";
   color: var(--dark-color);
   font-weight: 900;
 }
 .uploaded-image input:checked::before {
   background-color: var(--main-color);
-}
-.uploaded-image .list-diseases .body label {
+} */
+/* .uploaded-image .list-diseases .body label {
   padding-left: 15px;
-  font-size: 18px;
-}
+  font-size: 11px;
+} */
 
 .uploaded-image .waiting-data {
   position: relative;
@@ -296,6 +341,41 @@
   transform: translateX(-50%);
   padding: 5px 10px;
   border-radius: inherit;
+}
+
+/* Special color for each diseas */
+[data-color="orangered"]:checked ~ .checkmark {
+  background-color: orangered !important;
+}
+[data-color="orange"]:checked ~ .checkmark {
+  background-color: orange !important;
+}
+[data-color="red"]:checked ~ .checkmark {
+  background-color: red !important;
+}
+[data-color="crimson"]:checked ~ .checkmark {
+  background-color: crimson !important;
+}
+[data-color="yellow"]:checked ~ .checkmark {
+  background-color: yellow !important;
+}
+[data-color="green"]:checked ~ .checkmark {
+  background-color: green !important;
+}
+[data-color="blue"]:checked ~ .checkmark {
+  background-color: blue !important;
+}
+[data-color="darkorchid"]:checked ~ .checkmark {
+  background-color: darkorchid !important;
+}
+[data-color="aqua"]:checked ~ .checkmark {
+  background-color: aqua !important;
+}
+[data-color="brown"]:checked ~ .checkmark {
+  background-color: brown !important;
+}
+[data-color="burlywood"]:checked ~ .checkmark {
+  background-color: burlywood !important;
 }
 .place.green {
   border-color: green;
