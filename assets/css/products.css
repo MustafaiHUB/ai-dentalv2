@@ -105,7 +105,7 @@
   position: absolute;
 }
 .uploaded-image .choosing-models img.selected-image {
-  width: 100%;
+  /* width: 100%; */
 }
 .uploaded-image .list-diseases {
   text-align: center;

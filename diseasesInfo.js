@@ -14,6 +14,7 @@ const currentImage = document.querySelector('.current-img');
 const uploadInput = document.getElementById('upload-input');
 let imageWidth;
 let imageHeight;
+let orientationStatus = 0;
 // choosingModels.addEventListener('click', models);
 uploadInput.addEventListener('change', changeInput);
 
@@ -105,7 +106,7 @@ async function JSONcall1(imageFile) {
     formData.append("image", imageFile);
 
     try {
-        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo:8000/upload/', {
+        const res = await Promise.race([fetch('https://dentalvision.ju.edu.jo/upload/', {
             // const res = await Promise.race([fetch('http://87.236.232.91:8000/upload/', {
             method: 'POST',
             body: formData,
@@ -123,7 +124,8 @@ async function JSONcall1(imageFile) {
             choosingModels.insertAdjacentHTML('beforeend', noDiseaseHTML);
         } else {
             const data = await res.json();
-            console.log(data);
+            console.log(data.orientation);
+            orientationStatus = data.orientation;
             JSONcall2(imageFile);
         }
     } catch (err) {
@@ -137,7 +139,7 @@ async function JSONcall1(imageFile) {
 
 async function JSONcall2(imageFile) {
     try {
-        const res = await Promise.race([fetch('http://dentalvision.ju.edu.jo:8000/v8_mohammad/', {
+        const res = await Promise.race([fetch('https://dentalvision.ju.edu.jo/v8_mohammad/', {
             // const res = await Promise.race([fetch('http://87.236.232.91:8000/v8_mohammad/', {
             method: 'POST',
             headers: {
@@ -159,6 +161,7 @@ async function JSONcall2(imageFile) {
             choosingModels.insertAdjacentHTML('beforeend', noDiseaseHTML);
         } else {
             const data = await res.json();
+            console.log("data", data);
             const numberOfDiseases = data.length;
 
             if (!numberOfDiseases) {
@@ -211,13 +214,29 @@ async function JSONcall2(imageFile) {
 
                         // why is it undefined?
                         console.log(imageHeight, imageWidth);
-                        // generateDiseasePlace(color = '', diseaseName, topCoords, leftCoords, score, width, height)
-                        generateDiseasePlace(diseaseColorInput, nameOfDisease, box[0] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), (box[3] - box[1]) * imageWidth, (box[2] - box[0]) * imageHeight);
-                        // generateDiseasePlace(diseaseColorInput, nameOfDisease, box[0] * 100, box[1] * 100, (score * 100).toFixed(1), (box[3] - box[1]) * 100, (box[2] - box[0]) * 100);
-                        console.log(box[0]);
-                        console.log(box[1]);
-                        console.log(box[2]);
-                        console.log(box[3]);
+                        // function generateDiseasePlace(color = '', diseaseName, topCoords, leftCoords, score, width, height)
+                        if (orientationStatus === '90cc') {
+                            console.log("90cc image");
+                            console.log(box[1] * imageWidth, imageHeight - box[2] * imageHeight);
+                            console.log(Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+                            generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageWidth, imageHeight - box[2] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+
+                        } else if (orientationStatus === '90c') {
+                            console.log("90c image");
+                            generateDiseasePlace(diseaseColorInput, nameOfDisease, imageWidth - box[3] * imageWidth, box[0] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+
+                        } else if (orientationStatus === '180') {
+                            console.log("180 image");
+                            generateDiseasePlace(diseaseColorInput, nameOfDisease, imageHeight - box[2] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), Math.abs(box[3] - box[1]) * imageWidth, Math.abs(box[2] - box[0]) * imageHeight);
+                        } else { // default
+                            console.log("0 image");
+                            generateDiseasePlace(diseaseColorInput, nameOfDisease, box[0] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), Math.abs(box[3] - box[1]) * imageWidth, Math.abs(box[2] - box[0]) * imageHeight);
+                        }
+
+                        // console.log(box[0]);
+                        // console.log(box[1]);
+                        // console.log(box[2]);
+                        // console.log(box[3]);
                         // color = '', diseaseName, topCoords, leftCoords, score, width, height
                     }
                     // Get all places that were created
