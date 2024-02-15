@@ -219,11 +219,12 @@ async function JSONcall2(imageFile) {
                             console.log("90cc image");
                             console.log(box[1] * imageWidth, imageHeight - box[2] * imageHeight);
                             console.log(Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
-                            generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageWidth, imageHeight - box[2] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
-
+                            // generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageWidth, imageHeight - box[2] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+                            generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageHeight, imageWidth - box[2] * imageWidth, (score * 100).toFixed(1), (box[2] - box[0]) * imageWidth, (box[3] - box[1]) * imageHeight);
                         } else if (orientationStatus === '90c') {
                             console.log("90c image");
-                            generateDiseasePlace(diseaseColorInput, nameOfDisease, imageWidth - box[3] * imageWidth, box[0] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+                            generateDiseasePlace(diseaseColorInput, nameOfDisease, imageHeight - box[3] * imageHeight, box[0] * imageWidth, (score * 100).toFixed(1), (box[2] - box[0]) * imageWidth, (box[3] - box[1]) * imageHeight);
+                            // generateDiseasePlace(diseaseColorInput, nameOfDisease, imageWidth - box[3] * imageWidth, box[0] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
 
                         } else if (orientationStatus === '180') {
                             console.log("180 image");
