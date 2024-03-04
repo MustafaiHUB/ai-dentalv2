@@ -108,6 +108,7 @@ async function JSONcall1(imageFile) {
     try {
         const res = await Promise.race([fetch('https://dentalvision.ju.edu.jo/upload/', {
             // const res = await Promise.race([fetch('http://87.236.232.91:8000/upload/', {
+            mode: 'cors',
             method: 'POST',
             body: formData,
         }), setTimeOut(120)]);
@@ -141,6 +142,7 @@ async function JSONcall2(imageFile) {
     try {
         const res = await Promise.race([fetch('https://dentalvision.ju.edu.jo/v8_mohammad/', {
             // const res = await Promise.race([fetch('http://87.236.232.91:8000/v8_mohammad/', {
+            mode: 'cors',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
