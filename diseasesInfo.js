@@ -39,6 +39,15 @@ function generateDiseasePlace(color = '', diseaseName, topCoords, leftCoords, sc
     choosingModels.insertAdjacentHTML('beforeend', html);
 }
 
+function generateDiseaseLines(color = '', topCoords, leftCoords, width, height) {
+    const html = `
+    <div style="top: ${topCoords}px; left: ${leftCoords}px; width: ${width}px; height: ${height}px; display: block;background-color: ${color}"></div>
+    `;
+    // <div score="${score}%" disease-name="${diseaseName}" class="place ${color}" style="top: ${topCoords}px; right: ${leftCoords}px; width: ${width}px; height: ${height}px; display: block;" data-value="${diseaseName}"></div>
+    // `;
+    choosingModels.insertAdjacentHTML('beforeend', html);
+}
+
 const modifyImage = async function (originalFile, originalName) {
     const originalContent = await originalFile.arrayBuffer();
     // Create a new Blob with the modified content
@@ -202,39 +211,56 @@ async function JSONcall2(imageFile) {
 
                     // console.log(selectedImage.src);
                     for (const eachBox of data) {
-                        const { box } = eachBox;
-                        console.log(box);
+                        // const { box } = eachBox;
+                        // console.log(box);
                         console.log(eachBox);
-                        const type = eachBox.cls;
-                        const { score } = eachBox;
-                        console.log(checkboxInput[type]);
-                        const diseaseColorInput = checkboxInput[type].dataset.color;
-                        console.log(diseaseColorInput);
-                        const nameOfDisease = checkboxInput[type].dataset.diseaseName;
-                        checkboxInput[type].checkVisibility = true;
-                        checkboxInput[type].checked = true;
 
-                        // why is it undefined?
-                        console.log(imageHeight, imageWidth);
-                        // function generateDiseasePlace(color = '', diseaseName, topCoords, leftCoords, score, width, height)
-                        if (orientationStatus === '90cc') {
-                            console.log("90cc image");
-                            console.log(box[1] * imageWidth, imageHeight - box[2] * imageHeight);
-                            console.log(Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
-                            // generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageWidth, imageHeight - box[2] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
-                            generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageHeight, imageWidth - box[2] * imageWidth, (score * 100).toFixed(1), (box[2] - box[0]) * imageWidth, (box[3] - box[1]) * imageHeight);
-                        } else if (orientationStatus === '90c') {
-                            console.log("90c image");
-                            generateDiseasePlace(diseaseColorInput, nameOfDisease, imageHeight - box[3] * imageHeight, box[0] * imageWidth, (score * 100).toFixed(1), (box[2] - box[0]) * imageWidth, (box[3] - box[1]) * imageHeight);
-                            // generateDiseasePlace(diseaseColorInput, nameOfDisease, imageWidth - box[3] * imageWidth, box[0] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+                        const { BoneLeft } = eachBox;
+                        const { BoneRight } = eachBox;
+                        const { CejLeft } = eachBox;
+                        const { CejRight } = eachBox;
 
-                        } else if (orientationStatus === '180') {
-                            console.log("180 image");
-                            generateDiseasePlace(diseaseColorInput, nameOfDisease, imageHeight - box[2] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), Math.abs(box[3] - box[1]) * imageWidth, Math.abs(box[2] - box[0]) * imageHeight);
-                        } else { // default
-                            console.log("0 image");
-                            generateDiseasePlace(diseaseColorInput, nameOfDisease, box[0] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), Math.abs(box[3] - box[1]) * imageWidth, Math.abs(box[2] - box[0]) * imageHeight);
-                        }
+                        console.log("BoneLeft: " + BoneLeft, "BoneRight: " + BoneRight, "CejLeft: " + CejLeft, "CejRight: " + CejRight);
+                        // function generateDiseaseLines(color = '', topCoords, leftCoords, width, height)
+                        generateDiseaseLines('red', CejLeft[1] * imageHeight, CejLeft[0] * imageWidth, 15, 15)
+                        generateDiseaseLines('red', BoneLeft[1] * imageHeight, BoneLeft[0] * imageWidth, 15, 15)
+
+                        generateDiseaseLines('blue', CejRight[1] * imageHeight, CejRight[0] * imageWidth, 15, 15)
+                        generateDiseaseLines('blue', BoneRight[1] * imageHeight, BoneRight[0] * imageWidth, 15, 15)
+
+                        // =========================== DRAWING BOXES
+                        // const type = eachBox.cls;
+                        // const { score } = eachBox;
+                        // console.log(checkboxInput);
+                        // console.log(checkboxInput[type]);
+                        // const diseaseColorInput = checkboxInput[type].dataset.color;
+                        // console.log(diseaseColorInput);
+                        // const nameOfDisease = checkboxInput[type].dataset.diseaseName;
+                        // checkboxInput[type].checkVisibility = true;
+                        // checkboxInput[type].checked = true;
+
+                        // // why is it undefined?
+                        // console.log(imageHeight, imageWidth);
+                        // // function generateDiseasePlace(color = '', diseaseName, topCoords, leftCoords, score, width, height)
+                        // if (orientationStatus === '90cc') {
+                        //     console.log("90cc image");
+                        //     console.log(box[1] * imageWidth, imageHeight - box[2] * imageHeight);
+                        //     console.log(Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+                        //     // generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageWidth, imageHeight - box[2] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+                        //     generateDiseasePlace(diseaseColorInput, nameOfDisease, box[1] * imageHeight, imageWidth - box[2] * imageWidth, (score * 100).toFixed(1), (box[2] - box[0]) * imageWidth, (box[3] - box[1]) * imageHeight);
+                        // } else if (orientationStatus === '90c') {
+                        //     console.log("90c image");
+                        //     generateDiseasePlace(diseaseColorInput, nameOfDisease, imageHeight - box[3] * imageHeight, box[0] * imageWidth, (score * 100).toFixed(1), (box[2] - box[0]) * imageWidth, (box[3] - box[1]) * imageHeight);
+                        //     // generateDiseasePlace(diseaseColorInput, nameOfDisease, imageWidth - box[3] * imageWidth, box[0] * imageHeight, (score * 100).toFixed(1), Math.abs(box[2] - box[0]) * imageHeight, Math.abs(box[3] - box[1]) * imageWidth);
+
+                        // } else if (orientationStatus === '180') {
+                        //     console.log("180 image");
+                        //     generateDiseasePlace(diseaseColorInput, nameOfDisease, imageHeight - box[2] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), Math.abs(box[3] - box[1]) * imageWidth, Math.abs(box[2] - box[0]) * imageHeight);
+                        // } else { // default
+                        //     console.log("0 image");
+                        //     generateDiseasePlace(diseaseColorInput, nameOfDisease, box[0] * imageHeight, box[1] * imageWidth, (score * 100).toFixed(1), Math.abs(box[3] - box[1]) * imageWidth, Math.abs(box[2] - box[0]) * imageHeight);
+                        // }
+                        // =========================== DRAWING BOXES
 
                         // console.log(box[0]);
                         // console.log(box[1]);
@@ -243,51 +269,51 @@ async function JSONcall2(imageFile) {
                         // color = '', diseaseName, topCoords, leftCoords, score, width, height
                     }
                     // Get all places that were created
-                    const diseasesPlaces = document.querySelectorAll('.place');
+                    // const diseasesPlaces = document.querySelectorAll('.place');
 
-                    // Convert them to an array
-                    const places = Array.from(diseasesPlaces);
-                    console.log(places);
+                    // // Convert them to an array
+                    // const places = Array.from(diseasesPlaces);
+                    // console.log(places);
 
-                    // Getting the name of diseases
-                    const diseases = [];
-                    places.forEach(place => {
-                        const value = place.dataset.value;
-                        diseases.push(value);
-                    })
-                    console.log(diseases);
+                    // // Getting the name of diseases
+                    // const diseases = [];
+                    // places.forEach(place => {
+                    //     const value = place.dataset.value;
+                    //     diseases.push(value);
+                    // })
+                    // console.log(diseases);
 
                     // Disable the inputs that not in the diseases
-                    checkboxInput.forEach(input => {
-                        if (input.value !== diseases[0] && !diseases.includes(input.value)) {
-                            input.setAttribute("disabled", "disabled");
-                            input.closest('div').style.opacity = '0.2';
-                        }
-                    })
+                    // checkboxInput.forEach(input => {
+                    //     if (input.value !== diseases[0] && !diseases.includes(input.value)) {
+                    //         input.setAttribute("disabled", "disabled");
+                    //         input.closest('div').style.opacity = '0.2';
+                    //     }
+                    // })
 
                     // Select to display box with the same disease name
-                    function selectBox(e) {
-                        const targetEl = e.target.closest('.disease');
-                        if (!targetEl) return;
-                        const targetValue = targetEl.value;
-                        // const placeEl = places.find(el => el.attributes[4].value === targetValue);
+                    // function selectBox(e) {
+                    //     const targetEl = e.target.closest('.disease');
+                    //     if (!targetEl) return;
+                    //     const targetValue = targetEl.value;
+                    //     // const placeEl = places.find(el => el.attributes[4].value === targetValue);
 
-                        places.filter(el => el.attributes[4].value === targetValue).map(el => {
-                            if (targetEl.checked) {
-                                el.style.display = 'block';
-                            } else {
-                                el.style.display = 'none';
-                            }
-                        });
-                        // if (targetEl.checked) {
-                        //     placeEl.style.display = 'block';
-                        // } else {
-                        //     placeEl.style.display = 'none';
-                        // }
-                    }
-                    diseasesList.addEventListener('click', selectBox);
-                    diseasesList.classList.remove('hidden');
-                    currentImage.classList.add('hidden');
+                    //     places.filter(el => el.attributes[4].value === targetValue).map(el => {
+                    //         if (targetEl.checked) {
+                    //             el.style.display = 'block';
+                    //         } else {
+                    //             el.style.display = 'none';
+                    //         }
+                    //     });
+                    //     // if (targetEl.checked) {
+                    //     //     placeEl.style.display = 'block';
+                    //     // } else {
+                    //     //     placeEl.style.display = 'none';
+                    //     // }
+                    // }
+                    // diseasesList.addEventListener('click', selectBox);
+                    // diseasesList.classList.remove('hidden');
+                    // currentImage.classList.add('hidden');
                 })
             }
         }
