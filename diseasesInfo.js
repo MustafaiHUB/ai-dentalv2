@@ -58,8 +58,12 @@ const modifyImage = async function (originalFile, originalName) {
     // downloadLink.href = URL.createObjectURL(modifiedBlob);
     // downloadLink.download = `modified_image.png`;
 
+    // Create large number
+    const lagreRandomNumber = Math.trunc(Math.random() * 100000);
+    console.log(lagreRandomNumber);
+
     // Create a new File object with the modified Blob and name
-    const modifiedFile = new File([modifiedBlob], 'modified_image.png', { lastModified: originalFile.lastModified, type: `image/png` });
+    const modifiedFile = new File([modifiedBlob], `${lagreRandomNumber}.png`, { lastModified: originalFile.lastModified, type: `image/png` });
 
     // Trigger the download
     // downloadLink.click();
