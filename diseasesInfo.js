@@ -410,11 +410,39 @@ async function JSONcall3(imageFile) {
 
                         console.log("BoneLeft: " + BoneLeft, "BoneRight: " + BoneRight, "CejLeft: " + CejLeft, "CejRight: " + CejRight);
                         // function generateDiseaseLines(color = '', topCoords, leftCoords, width, height)
-                        generateDiseaseLines('red', CejLeft[1] * imageHeight, CejLeft[0] * imageWidth, 15, 15)
-                        generateDiseaseLines('red', BoneLeft[1] * imageHeight, BoneLeft[0] * imageWidth, 15, 15)
+                        if (orientationStatus === '90c') {
+                            generateDiseaseLines('red', imageHeight - (CejLeft[0] * imageHeight), CejLeft[1] * imageWidth, 15, 15)
+                            generateDiseaseLines('red', imageHeight - (BoneLeft[0] * imageHeight), BoneLeft[1] * imageWidth, 15, 15)
 
-                        generateDiseaseLines('blue', CejRight[1] * imageHeight, CejRight[0] * imageWidth, 15, 15)
-                        generateDiseaseLines('blue', BoneRight[1] * imageHeight, BoneRight[0] * imageWidth, 15, 15)
+                            generateDiseaseLines('blue', imageHeight - (CejRight[0] * imageHeight), CejRight[1] * imageWidth, 15, 15)
+                            generateDiseaseLines('blue', imageHeight - (BoneRight[0] * imageHeight), BoneRight[1] * imageWidth, 15, 15)
+                        } else if (orientationStatus === '90cc') {
+                            generateDiseaseLines('red', (CejLeft[0] * imageHeight), imageWidth - (CejLeft[1] * imageWidth), 15, 15)
+                            generateDiseaseLines('red', (BoneLeft[0] * imageHeight), imageWidth - (BoneLeft[1] * imageWidth), 15, 15)
+
+                            generateDiseaseLines('blue', (CejRight[0] * imageHeight), imageWidth - (CejRight[1] * imageWidth), 15, 15)
+                            generateDiseaseLines('blue', (BoneRight[0] * imageHeight), imageWidth - (BoneRight[1] * imageWidth), 15, 15)
+                        } else if (orientationStatus === '180') {
+                            generateDiseaseLines('red', imageHeight - (CejLeft[1] * imageHeight), CejLeft[0] * imageWidth, 15, 15)
+                            generateDiseaseLines('red', imageHeight - (BoneLeft[1] * imageHeight), BoneLeft[0] * imageWidth, 15, 15)
+
+                            generateDiseaseLines('blue', imageHeight - (CejRight[1] * imageHeight), CejRight[0] * imageWidth, 15, 15)
+                            generateDiseaseLines('blue', imageHeight - (BoneRight[1] * imageHeight), BoneRight[0] * imageWidth, 15, 15)
+                        } else {
+                            generateDiseaseLines('red', CejLeft[1] * imageHeight, CejLeft[0] * imageWidth, 15, 15)
+                            generateDiseaseLines('red', BoneLeft[1] * imageHeight, BoneLeft[0] * imageWidth, 15, 15)
+
+                            generateDiseaseLines('blue', CejRight[1] * imageHeight, CejRight[0] * imageWidth, 15, 15)
+                            generateDiseaseLines('blue', BoneRight[1] * imageHeight, BoneRight[0] * imageWidth, 15, 15)
+                        }
+                        // generateDiseaseLines('blue', imageHeight - (CejRight[1] * imageHeight), CejRight[0] * imageWidth, 15, 15)
+                        // generateDiseaseLines('blue', BoneRight[1] * imageHeight, BoneRight[0] * imageWidth, 15, 15)
+
+                        // generateDiseaseLines('red', CejLeft[1] * imageHeight, CejLeft[0] * imageWidth, 15, 15)
+                        // generateDiseaseLines('red', BoneLeft[1] * imageHeight, BoneLeft[0] * imageWidth, 15, 15)
+
+                        // generateDiseaseLines('blue', CejRight[1] * imageHeight, CejRight[0] * imageWidth, 15, 15)
+                        // generateDiseaseLines('blue', BoneRight[1] * imageHeight, BoneRight[0] * imageWidth, 15, 15)
 
                         // =========================== DRAWING BOXES
                         // const type = eachBox.cls;
