@@ -77,10 +77,6 @@ const modifyImage = async function (originalFile, originalName) {
 
 async function changeInput(e) {
     clearInput();
-    context.clearRect(0, 0, context.width, context.height);
-    canvas.innerHTML = ''
-    context.innerHTML = ''
-
     canvas.style.display = 'none'
     e.preventDefault();
 
@@ -92,7 +88,8 @@ async function changeInput(e) {
     });
     diseasesList.classList.add('hidden');
     currentImage.classList.remove('hidden');
-
+    // Hide BoneLoss Div
+    bonelossDiv.classList.add('hidden')
     // Getting the file information
     const imageFile = e.target.files[0];
     const imageName = imageFile.name;
