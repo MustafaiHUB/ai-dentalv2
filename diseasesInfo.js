@@ -300,6 +300,13 @@ async function JSONcall3(imageFile) {
                     canvas.setAttribute('width', imageWidth);
                     canvas.setAttribute('height', imageHeight);
                     for (const eachBox of pointsList) {
+                        const { leftBorderRootFlag } = eachBox;
+                        const { rightBorderRootFlag } = eachBox;
+
+                        if (leftBorderRootFlag === 1 || rightBorderRootFlag === 1) {
+                            console.log("returned");
+                            return;
+                        }
                         console.log(eachBox);
 
                         const { BoneLeft } = eachBox;
