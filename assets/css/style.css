@@ -20,7 +20,9 @@ body {
   text-align: justify;
 }
 :root {
-  --main-color: #4b91f1;
+  /* --main-color: #4b91f1; */
+  --main-color: #00b2c8;
+  --dark-blue: #006f95;
   --second-color: red;
   --light-color: #eee;
   --dark-color: #333;
@@ -59,8 +61,13 @@ body {
 /* large */
 @media (min-width: 1200px) {
   .container {
-    /* width: 1600px; */
     width: 1170px;
+  }
+}
+/* very large */
+@media (min-width: 1286px) {
+  .container {
+    width: 1370px;
   }
 }
 .container {
@@ -145,26 +152,20 @@ a {
 /* === START HEADER === */
 header {
   background-color: var(--light-color);
-  /* transition: var(--transition-5m); */
   transition: 1s;
+  margin: 0 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 4px solid var(--main-color);
+  border-top: none;
+  box-shadow: 0 0 10px 0 var(--main-color) inset;
 }
-/* header.sticky {
-  transition: var(--transition-5m);
-  transition: 1s;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-} */
 .nav {
   width: 100%;
-  /* background-color: var(--light-color); */
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 200px;
+  padding: 0 100px;
 }
 .nav.sticky {
   position: fixed;
@@ -209,10 +210,10 @@ header {
 }
 header .container a#logo img {
   margin: 10px 0;
-  height: 75px;
+  height: 100px;
 }
 .nav.sticky a#logo img {
-  height: 60px;
+  height: 75px;
 }
 header .container nav {
   flex: 1;
@@ -228,6 +229,11 @@ header .container nav ul li a {
   padding: 10px 20px;
   color: var(--dark-color);
   font-weight: 700;
+}
+@media (max-width: 585px) {
+  header .container nav ul li a {
+    padding: 10px;
+  }
 }
 .nav.sticky nav ul li a {
   font-size: 15px;

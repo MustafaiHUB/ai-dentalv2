@@ -20,7 +20,7 @@ class App {
       <div class="container nav">
         <a href="index.html" id="logo">
           <img
-            src="assets/Images/ai-dental-blue.png"
+            src="assets/Images/Logo_2.png"
             alt="AI Dental Logo"
             title="AI Dental"
           />
@@ -40,8 +40,8 @@ class App {
     const footerHTML = `
     <div class="container">
         <div class="footer-top">
-          <a href="index.html">
-            <img src="assets/Images/ai-dental-white.png" alt="AI Dental" />
+          <a href="index.html" id="logo">
+            <img src="assets/Images/Logo_2.png" alt="AI Dental" />
           </a>
           <div class="links">
             <h3>Important Links</h3>
