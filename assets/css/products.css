@@ -75,11 +75,11 @@ body {
   background: #eee;
 }
 #products .container .uploading-images > img {
-  height: 100px;
+  height: 200px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin: 100px 0;
+  margin: 50px 0;
   object-fit: cover;
 }
 @media (max-width: 585px) {

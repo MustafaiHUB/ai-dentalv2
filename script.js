@@ -20,15 +20,15 @@ class App {
       <div class="container nav">
         <a href="index.html" id="logo">
           <img
-            src="assets/Images/Logo_2.png"
+            src="assets/Images/dental-logo.png"
             alt="AI Dental Logo"
             title="AI Dental"
           />
         </a>
         <nav>
           <ul>
+            <li><a class="link" href="index.html">Home</a></li>
             <li><a class="link" href="products.html">Our Product</a></li>
-            <li><a class="link" href="#">About</a></li>
             <li><a class="link" href="contact.html" id="contact-us">Contact Us</a></li>
           </ul>
         </nav>
@@ -41,13 +41,13 @@ class App {
     <div class="container">
         <div class="footer-top">
           <a href="index.html" id="logo">
-            <img src="assets/Images/Logo_2.png" alt="AI Dental" />
+            <img src="assets/Images/dental-logo.png" alt="AI Dental" />
           </a>
           <div class="links">
             <h3>Important Links</h3>
             <div>
+              <a href="index.html">Home</a>
               <a href="products.html">Our Product</a>
-              <a href="about.html">About</a>
               <a href="contact.html">Contact Us</a>
             </div>
           </div>
@@ -61,17 +61,13 @@ class App {
             <div class="general">
               <div>
                 <i class="fa-solid fa-envelope"></i>
-                <div>example@gmail.com</div>
-              </div>
-              <div>
-                <i class="fa-solid fa-phone"></i>
-                <div>+96212374893</div>
+                <div>M.Abdel-Majeed@ju.edu.jo</div>
               </div>
             </div>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>Copyright © 2023 CPE | All rights reserved.</p>
+          <p>Copyright © 2024 CPE | All rights reserved.</p>
         </div>
       </div>
     `;
