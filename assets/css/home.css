@@ -112,35 +112,36 @@
 /* === END CHOOSE US === */
 
 /* === START GROUP MEMBERS === */
+#group-members {
+  padding-bottom: var(--padding-bottom-100);
+}
 #group-members .choose-cards {
-  margin-top: 100px;
-  gap: 1rem;
+  margin-top: 50px;
+  align-items: start;
 }
 #group-members .choose-cards .card {
   display: flex;
   align-items: start;
   border-radius: 10px;
-  box-shadow: 10px 10px 20px 0 var(--main-color);
-  height: fit-content;
+  box-shadow: 5px 5px 10px 0 var(--main-color);
+  margin-bottom: 20px;
 }
 #group-members .choose-cards .card > img {
-  height: 100%;
-  /* height: 250px; */
+  height: 150px;
   border-top-left-radius: inherit;
-  border-bottom-left-radius: inherit;
 }
 #group-members .choose-cards .card .card-info {
   padding: 20px;
-  height: 100%;
+  /* height: 100%; */
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-#group-members .choose-cards .card .card-info h3 {
-}
 #group-members .choose-cards .card .card-info h4 {
   font-weight: normal;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 #group-members .choose-cards .card .card-info a {
   display: block;
@@ -149,11 +150,18 @@
   padding: 5px 10px;
   border-radius: 10px;
   transition: var(--transition-3m);
+  margin-top: 10px;
 }
 #group-members .choose-cards .card .card-info a:hover {
   background-color: var(--main-color);
   color: var(--light-color);
 }
-#group-members .choose-cards .card .card-info p {
+#group-members .choose-cards .card .card-info .extra-text {
+  display: none;
+}
+.see_more {
+  text-decoration: underline;
+  color: var(--main-color);
+  cursor: pointer;
 }
 /* === END GROUP MEMBERS === */
