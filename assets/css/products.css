@@ -434,3 +434,10 @@ canvas {
   position: absolute;
   z-index: 99;
 }
+
+.image_standard_error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin: 10px 0;
+}

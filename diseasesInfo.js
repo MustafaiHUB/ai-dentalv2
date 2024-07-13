@@ -15,7 +15,7 @@ const canvas = document.getElementById("myCanvas");
 const context = canvas.getContext("2d");
 const bonelossDiv = document.querySelector('.boneloss-div');
 const bonelossInput = document.getElementById('boneloss');
-
+const imageNotStandardError = document.querySelector('.image_standard_error');
 
 // Global Variables
 let imageWidth;
@@ -24,6 +24,7 @@ let orientationStatus = 0;
 let pointsList = [];
 let points = {};
 let bonelossPoints;
+let imageIsNotStandardFlag = false;
 // Functions
 uploadInput.addEventListener('change', changeInput);
 function setTimeOut(sec) {
@@ -71,9 +72,11 @@ const modifyImage = async function (originalFile, originalName) {
 }
 
 async function changeInput(e) {
-    clearInput();
-    canvas.style.display = 'none'
     e.preventDefault();
+    clearInput();
+    imageIsNotStandardFlag = false;
+    canvas.style.display = 'none'
+    imageNotStandardError.classList.add('hidden');
 
     // Reset checked input to fasle
     checkboxInput.forEach(input => {
@@ -304,6 +307,10 @@ async function JSONcall3(imageFile) {
                         console.log("returned");
                         continue;
                     }
+                    if (leftBorderRootFlag === 2 && rightBorderRootFlag === 2) {
+                        console.log("image is not standard error!");
+                        imageIsNotStandardFlag = true;
+                    }
                     console.log("continue");
                     console.log(eachPoint);
 
@@ -400,6 +407,13 @@ async function JSONcall3(imageFile) {
 
                 }
                 console.log("continue");
+                if (imageIsNotStandardFlag) {
+                    canvas.style.display = 'none';
+                    // Hide BoneLoss Div
+                    bonelossDiv.classList.add('hidden');
+                    // Show the error
+                    imageNotStandardError.classList.remove('hidden');
+                }
                 for (const eachBox of data) {
                     console.log("continue");
 
