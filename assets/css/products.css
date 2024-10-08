@@ -4,6 +4,9 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+main {
+  position: relative;
+}
 /* === START HERO SECTION === */
 #hero {
   position: relative;
@@ -157,6 +160,7 @@ body {
 }
 .uploaded-image .choosing-models {
   position: relative;
+  /* overflow-x: auto; */
 }
 .uploaded-image .choosing-models > div {
   position: absolute;
@@ -440,4 +444,43 @@ canvas {
   color: red;
   font-weight: bold;
   margin: 10px 0;
+}
+
+.overlay-boneloss {
+  transform: scale(1);
+  transition: var(--transition-3m);
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  translate: -50%;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--light-color);
+  background-color: var(--main-color);
+  padding: 50px 20px 20px 20px;
+  border-radius: 5px;
+  border: 2px solid #333;
+}
+.overlay-boneloss.hide {
+  transform: scale(0);
+}
+.overlay-boneloss .close {
+  color: red;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
+  z-index: 9999;
 }

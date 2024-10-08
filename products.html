@@ -44,7 +44,6 @@
     <!-- === START HEADER === -->
     <header></header>
     <!-- === END HEADER === -->
-
     <main>
       <!-- === START HERO SECTION === -->
       <section id="hero">
@@ -300,7 +299,6 @@
                     name="boneloss"
                     id="boneloss"
                     data-color="blue"
-                    checked
                   />
                   <div class="checkmark"></div>
                 </label>
@@ -337,6 +335,24 @@
         </div>
       </section>
       <!-- === END OUR PRODUCTS === -->
+
+      <!-- === START OVERLAY === -->
+      <div class="overlay-boneloss hide">
+        <form id="showBonelossForm">
+          <label for="show_Boneloss">Do you want to see Boneloss data?</label>
+
+          <select
+            name="show_Boneloss"
+            id="show_Boneloss"
+          >
+            <option value="empty"></option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </form>
+        <span class="close">X</span>
+      </div>
+      <!-- === END OVERLAY === -->
     </main>
 
     <!-- === START FOOTER === -->
