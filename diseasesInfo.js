@@ -31,6 +31,7 @@ let bonelossPoints;
 let imageIsNotStandardFlag = false;
 let showBoneloss;
 
+// console.log(showBonelossSelect.value)
 // Functions
 closeBonelossOverlay.addEventListener('click', function () {
     bonelossOverlay.classList.add('hide')
@@ -94,7 +95,8 @@ async function changeInput(e) {
     imageIsNotStandardFlag = false;
     canvas.style.display = 'none'
     imageNotStandardError.classList.add('hidden');
-
+    showBonelossSelect.value = 'empty'
+    bonelossInput.checked = false;
     // Reset checked input to fasle
     checkboxInput.forEach(input => {
         input.checked = false;
@@ -147,7 +149,7 @@ bonelossInput.addEventListener('click', (e) => {
             bonelossPoints.forEach(point => point.style.opacity = '1')
         } else {
             canvas.style.display = 'none'
-            drawLinesShowHide(pointsList)
+            // drawLinesShowHide(pointsList)
             bonelossPoints.forEach(point => point.style.opacity = '0')
         }
     }
